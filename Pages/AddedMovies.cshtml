@@ -1,0 +1,56 @@
+﻿@page
+@model Assignment9.Pages.AddedMoviesModel
+@{
+}
+
+<h2>Movie Submissions</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Director</th>
+            <th>Rating</th>
+            <th>Edited</th>
+            <th>Lent To</th>
+            <th>Notes</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.Cart.Lines)
+        {
+        <tr>
+            <td class="text-left">@line.Movie.Category</td>
+            <td class="text-left">@line.Movie.Title</td>
+            <td class="text-left">@line.Movie.Year</td>
+            <td class="text-left">@line.Movie.Director</td>
+            <td class="text-left">@line.Movie.Rating</td>
+            <td class="text-left">@line.Movie.Edited</td>
+            <td class="text-left">@line.Movie.Lentto</td>
+            <td class="text-left">@line.Movie.Notes</td>
+            <td class="text-center">
+                <!--post data to session-->
+                <form asp-page-handler="Remove" method="post">
+                    <input type="hidden" name="MovieID" value="@line.Movie.MovieID" />
+                    <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        }
+    </tbody>
+
+    @*<tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total:</td>
+            <td class="text-right">@Model.Cart.ComputeTotalSum().ToString("c")</td>
+        </tr>
+    </tfoot>*@
+</table>
+
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
+</div>

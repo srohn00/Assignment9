@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Movie List";
+}
+@model Assignment9.Models.ViewModels.MovieListViewModel
+
+<div class="text-center">
+    <h1 class="display-4">Movies</h1>
+    <p>Testing testing 1 2 3</p>
+</div>
+<!--display each entry in database/ seed data ALSO highlight the number of pages AND change title cbackground color-->
+<div>
+    @foreach (var p in Model.Movies)
+    {
+        <partial name="MovieSummary" model="p" />
+    }
+</div>

@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Movie
+
+<div class="card card-outline-primary m-2 p-2">
+    <div>
+        <h4 class="bg-primary">@Model.Title</h4>
+        <p>Category: @Model.Category</p>
+        <p>Rating: @Model.Rating</p>
+        <p>Year: @Model.Year</p>
+        <p>Director: @Model.Director</p>
+        <p>Edited: @Model.Edited</p>
+        <p>Lentto: @Model.Lentto</p>
+        <p>Notes: @Model.Notes</p>
+    </div>
+
+    <form id="@Model.MovieID" asp-page="/AddedMovies" method="post">
+        <input type="hidden" asp-for="MovieID" />
+        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+        <span class="card-text p-1">
+            @Model.Title
+            <button type="submit" class="btn-success btn-sm pull-right" style="float:right">
+                Add to List
+            </button>
+        </span>
+    </form>
+</div>

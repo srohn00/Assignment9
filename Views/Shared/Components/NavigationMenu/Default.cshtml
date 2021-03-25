@@ -1,0 +1,11 @@
+﻿@model Cart
+<!--cart summary in top nav bar-->
+
+<div class="">
+    <!--link to cart page-->
+    <a class="btn btn-sm btn-secondary navbar-btn" asp-page="/AddedMovies" asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()">
+        <!--font-awesome shopping cart logo-->
+        <!--<i class="fade fa-shopping-cart"></i>-->
+        Checkout
+    </a>
+</div>
